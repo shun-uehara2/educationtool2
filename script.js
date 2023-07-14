@@ -8,7 +8,7 @@ var wrongAdditionCount = 0;
 var correctSubtractionCount = 0;
 var wrongSubtractionCount = 0;
 
-var correctMultiplicationCount = 0;
+var correctMultiplicationCount = 0; o
 var wrongMultiplicationCount = 0;
 
 function generateNumbers() {
