@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>正負の数のゲーム</title>
+  <script src="game.js"></script>
+</head>
+
+<body>
+  <h1>正負の数のゲーム</h1>
+
+  <h2>加算問題</h2>
+  <p id="numbers"></p>
+  <button onclick="checkAdditionAnswer('+')">+と答える</button>
+  <button onclick="checkAdditionAnswer('0')">0と答える</button>
+  <button onclick="checkAdditionAnswer('-')">-と答える</button>
+  <p id="additionResult"></p>
+  <p id="additionScore">正解: 0 不正解: 0</p>
+
+  <h2>減算問題</h2>
+  <p id="subtractionNumbers"></p>
+  <button onclick="checkSubtractionAnswer('+')">+と答える</button>
+  <button onclick="checkSubtractionAnswer('0')">0と答える</button>
+  <button onclick="checkSubtractionAnswer('-')">-と答える</button>
+  <p id="subtractionResult"></p>
+  <p id="subtractionScore">正解: 0 不正解: 0</p>
+
+  <h2>乗算問題</h2>
+  <p id="multiplicationNumbers"></p>
+  <button onclick="checkMultiplicationAnswer('+')">+と答える</button>
+  <button onclick="checkMultiplicationAnswer('0')">0と答える</button>
+  <button onclick="checkMultiplicationAnswer('-')">-と答える</button>
+  <p id="multiplicationResult"></p>
+  <p id="multiplicationScore">正解: 0 不正解: 0</p>
+  <script src="/script.js"></script>
+</body>
+
+</html>
