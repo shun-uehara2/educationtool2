@@ -47,7 +47,7 @@ function generateMultiplicationNumbers() {
   var num1 = Math.floor(Math.random() * 20) - 10;
   var num2 = Math.floor(Math.random() * 20) - 10;
 
-  document.getElementById('multiplicationNumbers').innerHTML = (num1 >= 0 ? "+" : "-") + Math.abs(num1) + " ✕ " + (num2 >= 0 ? "+" : "-") + Math.abs(num2) + " = ?";
+  document.getElementById('multiplicationNumbers').innerHTML = (num1 >= 0 ? "+" : "-") + Math.abs(num1) + " × " + (num2 >= 0 ? "+" : "-") + Math.abs(num2) + " = ?";
 
   var product = num1 * num2;
   if (product > 0) {
