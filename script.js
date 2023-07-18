@@ -11,6 +11,31 @@ var wrongSubtractionCount = 0;
 var correctMultiplicationCount = 0;
 var wrongMultiplicationCount = 0;
 
+var timer;
+
+function startTimer() {
+  var timeLeft = 5 * 60; // 5 minutes in seconds
+  timer = setInterval(function() {
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      alert("Time's up!");
+    } else {
+      var minutes = Math.floor(timeLeft / 60);
+      var seconds = timeLeft % 60;
+      document.getElementById('timer').innerHTML = "Time left: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    }
+    timeLeft--;
+  }, 1000);
+}
+
+function calculateAccuracy(correctCount, totalCount) {
+  if (totalCount === 0) {
+    return "N/A"; // prevent division by zero
+  } else {
+    return ((correctCount / totalCount) * 100).toFixed(2) + "%";
+  }
+}
+
 function generateNumbers() {
   var num1 = Math.floor(Math.random() * 20) - 10;
   var num2 = Math.floor(Math.random() * 20) - 10;
@@ -69,7 +94,7 @@ function checkAdditionAnswer(userAnswer) {
   }
   setTimeout(() => document.getElementById('additionResult').innerHTML = "", 2000);
   generateNumbers();
-  document.getElementById('additionScore').innerHTML = "正解: " + correctAdditionCount + " 不正解: " + wrongAdditionCount;
+  document.getElementById('additionScore').innerHTML = "正解: " + correctAdditionCount + " 不正解: " + wrongAdditionCount + " 正解率: " + calculateAccuracy(correctAdditionCount, correctAdditionCount + wrongAdditionCount);
 }
 
 function checkSubtractionAnswer(userAnswer) {
@@ -82,7 +107,7 @@ function checkSubtractionAnswer(userAnswer) {
   }
   setTimeout(() => document.getElementById('subtractionResult').innerHTML = "", 2000);
   generateSubtractionNumbers();
-  document.getElementById('subtractionScore').innerHTML = "正解: " + correctSubtractionCount + " 不正解: " + wrongSubtractionCount;
+  document.getElementById('subtractionScore').innerHTML = "正解: " + correctSubtractionCount + " 不正解: " + wrongSubtractionCount + " 正解率: " + calculateAccuracy(correctSubtractionCount, correctSubtractionCount + wrongSubtractionCount);
 }
 
 function checkMultiplicationAnswer(userAnswer) {
@@ -95,33 +120,12 @@ function checkMultiplicationAnswer(userAnswer) {
   }
   setTimeout(() => document.getElementById('multiplicationResult').innerHTML = "", 2000);
   generateMultiplicationNumbers();
-  document.getElementById('multiplicationScore').innerHTML = "正解: " + correctMultiplicationCount + " 不正解: " + wrongMultiplicationCount;
+  document.getElementById('multiplicationScore').innerHTML = "正解: " + correctMultiplicationCount + " 不正解: " + wrongMultiplicationCount + " 正解率: " + calculateAccuracy(correctMultiplicationCount, correctMultiplicationCount + wrongMultiplicationCount);
 }
-
-// タイマー機能を追加するコードです
-let timeLeft = 5 * 60; // 5 minutes in seconds
-const timerElement = document.getElementById('timer');
-
-const updateTimer = () => {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-
-  timerElement.innerText = `時間: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-  if (timeLeft > 0) {
-    timeLeft--;
-  } else {
-    // Time's up!
-    // Stop the game, etc.
-    clearInterval(timerInterval);
-    alert("時間切れです！");
-  }
-}
-
-const timerInterval = setInterval(updateTimer, 1000);
 
 window.onload = function() {
   generateNumbers();
   generateSubtractionNumbers();
   generateMultiplicationNumbers();
+  startTimer();
 }
