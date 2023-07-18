@@ -98,6 +98,28 @@ function checkMultiplicationAnswer(userAnswer) {
   document.getElementById('multiplicationScore').innerHTML = "正解: " + correctMultiplicationCount + " 不正解: " + wrongMultiplicationCount;
 }
 
+// タイマー機能を追加するコードです
+let timeLeft = 5 * 60; // 5 minutes in seconds
+const timerElement = document.getElementById('timer');
+
+const updateTimer = () => {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  timerElement.innerText = `時間: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+  if (timeLeft > 0) {
+    timeLeft--;
+  } else {
+    // Time's up!
+    // Stop the game, etc.
+    clearInterval(timerInterval);
+    alert("時間切れです！");
+  }
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
+
 window.onload = function() {
   generateNumbers();
   generateSubtractionNumbers();
