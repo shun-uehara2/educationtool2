@@ -122,6 +122,27 @@ function checkMultiplicationAnswer(userAnswer) {
   generateMultiplicationNumbers();
   document.getElementById('multiplicationScore').innerHTML = "正解: " + correctMultiplicationCount + " 不正解: " + wrongMultiplicationCount + " 正解率: " + calculateAccuracy(correctMultiplicationCount, correctMultiplicationCount + wrongMultiplicationCount);
 }
+function loadFromLocalStorage() {
+  correctAdditionCount = parseInt(localStorage.getItem('correctAdditionCount')) || 0;
+  wrongAdditionCount = parseInt(localStorage.getItem('wrongAdditionCount')) || 0;
+
+  correctSubtractionCount = parseInt(localStorage.getItem('correctSubtractionCount')) || 0;
+  wrongSubtractionCount = parseInt(localStorage.getItem('wrongSubtractionCount')) || 0;
+
+  correctMultiplicationCount = parseInt(localStorage.getItem('correctMultiplicationCount')) || 0;
+  wrongMultiplicationCount = parseInt(localStorage.getItem('wrongMultiplicationCount')) || 0;
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem('correctAdditionCount', correctAdditionCount);
+  localStorage.setItem('wrongAdditionCount', wrongAdditionCount);
+
+  localStorage.setItem('correctSubtractionCount', correctSubtractionCount);
+  localStorage.setItem('wrongSubtractionCount', wrongSubtractionCount);
+
+  localStorage.setItem('correctMultiplicationCount', correctMultiplicationCount);
+  localStorage.setItem('wrongMultiplicationCount', wrongMultiplicationCount);
+}
 
 window.onload = function() {
   generateNumbers();
