@@ -99,7 +99,7 @@ function checkAdditionAnswer(userAnswer) {
 
 function checkSubtractionAnswer(userAnswer) {
   if (userAnswer == correctSubtractionAnswer) {
-    document.getElementById('subtractionResult').innerHTML = "正解です！";
+    document.getElementById('subtractionResult').innerHTML = "正解です ！";
     correctSubtractionCount++;
   } else {
     document.getElementById('subtractionResult').innerHTML = "不正解です。正解は " + correctSubtractionAnswer + " でした。";
